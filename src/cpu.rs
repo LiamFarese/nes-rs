@@ -16,6 +16,7 @@ impl CPU {
     }
 
     pub fn interpret(&mut self, program: Vec<u8>) {
+        let _program = program;
         todo!()
     }
 }
