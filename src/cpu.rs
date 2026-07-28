@@ -1,9 +1,11 @@
+#[expect(dead_code)]
 pub struct CPU {
     register_a: u8,
     status: u8,
     program_counter: u8,
 }
 
+#[expect(dead_code)]
 impl CPU {
     pub fn new() -> Self {
         CPU {
