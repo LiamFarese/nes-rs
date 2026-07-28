@@ -1,4 +1,5 @@
 #[expect(dead_code)]
+#[expect(clippy::upper_case_acronyms)]
 pub struct CPU {
     register_a: u8,
     status: u8,
