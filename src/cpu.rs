@@ -24,6 +24,10 @@ mod tests {
 
     #[test]
     fn test_contructor() {
-        let cpu = CPU::new();
+        let cpu = Some(CPU::new());
+        match cpu {
+            Some(_) => (),
+            None => panic!("Expected a cpu"),
+        }
     }
 }
