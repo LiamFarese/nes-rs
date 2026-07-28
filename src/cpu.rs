@@ -17,3 +17,13 @@ impl CPU {
         todo!()
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use crate::cpu::CPU;
+
+    #[test]
+    fn test_contructor() {
+        let cpu = CPU::new();
+    }
+}
