@@ -2,14 +2,15 @@ name: Security & Dependency Checks
 
 on:
   push:
-    branches:
-      - master
-    paths:
-      - '**/Cargo.toml'
-      - '**/Cargo.lock'
+    branches: [master]
+    paths: ['**/Cargo.toml', '**/Cargo.lock']
+
+  pull_request:
+    branches: [master]
+    paths: ['**/Cargo.toml', '**/Cargo.lock']
 
   schedule:
-    - cron: '0 12 * * 1' # run every Monday at 12:00 UTC
+    - cron: '0 12 * * 1'
 
   workflow_dispatch:
 
@@ -18,25 +19,19 @@ permissions:
 
 jobs:
   audit:
-    name: Cargo Audit
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
 
-      - uses: dtolnay/rust-toolchain@stable
-
-      - name: Security audit
-        uses: rustsec/audit-check@v2
+      - uses: rustsec/audit-check@v2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
   deny:
-    name: Cargo Deny
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
 
-      - name: Dependency policy
-        uses: EmbarkStudios/cargo-deny-action@v2
+      - uses: EmbarkStudios/cargo-deny-action@v2
