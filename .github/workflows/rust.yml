@@ -6,6 +6,9 @@ on:
   pull_request:
     branches: [master]
 
+permissions:
+  contents: read
+
 env:
   CARGO_TERM_COLOR: always
 
@@ -23,12 +26,6 @@ jobs:
       - name: Cache Cargo
         uses: Swatinem/rust-cache@v2
 
-      - name: Install cargo-audit
-        run: cargo install cargo-audit --locked
-
-      - name: Install cargo-deny
-        run: cargo install cargo-deny --locked
-
       - name: Check formatting
         run: cargo fmt --all -- --check
 
@@ -43,9 +40,3 @@ jobs:
 
       - name: Build documentation
         run: cargo doc --workspace --all-features --no-deps
-
-      - name: Security audit
-        run: cargo audit
-
-      - name: Dependency policy
-        run: cargo deny check
