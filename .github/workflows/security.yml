@@ -16,18 +16,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: dtolnay/rust-toolchain@stable
-
-      - uses: Swatinem/rust-cache@v2
-
-      - name: Install cargo-audit
-        run: cargo install cargo-audit --locked
-
-      - name: Install cargo-deny
-        run: cargo install cargo-deny --locked
-
       - name: Security audit
-        run: cargo audit
+        uses: actions-rust-lang/setup-rust-toolchain@v1
 
-      - name: Dependency policy
-        run: cargo deny check
+      - name: Run cargo-audit
+        uses: rustsec/audit-check@v2
+
+      - name: Run cargo-deny
+        uses: EmbarkStudios/cargo-deny-action@v2
