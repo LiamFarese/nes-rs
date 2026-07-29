@@ -1,4 +1,4 @@
-#[expect(dead_code)]
+#[derive(Debug, PartialEq)]
 pub struct CPU {
     register_a: u8,
     status: u8,
@@ -43,5 +43,12 @@ mod tests {
     fn test_default() {
         let cpu = CPU::default();
         assert!(cpu.program_counter == 0);
+    }
+
+    #[test]
+    fn test_are_equal() {
+        let cpu1 = CPU::default();
+        let cpu2 = CPU::new();
+        assert_eq!(cpu1, cpu2);
     }
 }
