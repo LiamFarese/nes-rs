@@ -1,12 +1,6 @@
 name: Security & Dependency Checks
 
 on:
-  # schedule:
-  #   # Every Monday at 12:00 UTC
-  #   - cron: "0 12 * * 1"
-
-  # # Allow running it manually from the Actions tab
-  # workflow_dispatch:
   push:
     branches: [master]
   pull_request:
