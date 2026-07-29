@@ -1,12 +1,10 @@
 #[expect(dead_code)]
-#[expect(clippy::upper_case_acronyms)]
 pub struct CPU {
     register_a: u8,
     status: u8,
     program_counter: u8,
 }
 
-#[expect(dead_code)]
 impl CPU {
     pub fn new() -> Self {
         CPU {
@@ -22,6 +20,12 @@ impl CPU {
     }
 }
 
+impl Default for CPU {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use crate::cpu::CPU;
@@ -33,5 +37,11 @@ mod tests {
             Some(_) => (),
             None => panic!("Expected a cpu"),
         }
+    }
+
+    #[test]
+    fn test_default() {
+        let cpu = CPU::default();
+        assert!(cpu.program_counter == 0);
     }
 }

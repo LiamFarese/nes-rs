@@ -3,11 +3,11 @@ name: Security & Dependency Checks
 on:
   push:
     branches: [master]
-    paths: ['**/Cargo.toml', '**/Cargo.lock']
+    paths: ['**/Cargo.toml', '**/Cargo.lock', '**/deny.toml']
 
   pull_request:
     branches: [master]
-    paths: ['**/Cargo.toml', '**/Cargo.lock']
+    paths: ['**/Cargo.toml', '**/Cargo.lock', '**/deny.toml']
 
   schedule:
     - cron: '0 12 * * 1'
