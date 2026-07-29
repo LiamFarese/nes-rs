@@ -1,12 +1,10 @@
 name: Security & Dependency Checks
 
 on:
-  schedule:
-    # Every Monday at 12:00 UTC
-    - cron: "0 12 * * 1"
-
-  # Allow running it manually from the Actions tab
-  workflow_dispatch:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
 
 permissions:
   contents: read
@@ -22,11 +20,11 @@ jobs:
 
       - uses: Swatinem/rust-cache@v2
 
-      - name: Install cargo-audit
-        run: cargo install cargo-audit --locked
+      - name: Install cargo-binstall
+        uses: cargo-bins/cargo-binstall@main
 
-      - name: Install cargo-deny
-        run: cargo install cargo-deny --locked
+      - name: Install security tools
+        run: cargo binstall cargo-audit cargo-deny --locked
 
       - name: Security audit
         run: cargo audit
