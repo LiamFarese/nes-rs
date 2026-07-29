@@ -43,8 +43,8 @@ jobs:
     strategy:
       matrix:
         os:
-          - ubuntu-latest-arm
-          - windows-latest-arm
+          - ubuntu-latest
+          - windows-latest
           - macos-latest
 
     runs-on: ${{ matrix.os }}
