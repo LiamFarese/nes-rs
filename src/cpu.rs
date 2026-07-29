@@ -38,4 +38,10 @@ mod tests {
             None => panic!("Expected a cpu"),
         }
     }
+
+    #[test]
+    fn test_default() {
+        let cpu = CPU::default();
+        assert!(cpu.program_counter == 0);
+    }
 }
