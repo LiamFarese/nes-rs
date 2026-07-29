@@ -2,16 +2,20 @@ name: Security & Dependency Checks
 
 on:
   push:
-    branches: [master]
-  pull_request:
-    branches: [master]
+    branches:
+      - master
+    paths:
+      - '**/Cargo.toml'
+  schedule:
+    - cron: '0 12 * * 1' # run at 12 PM UTC on Monday
+
 
 permissions:
   contents: read
 
 jobs:
   security:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest-arm
 
     steps:
       - uses: actions/checkout@v4
