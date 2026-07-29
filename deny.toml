@@ -1,0 +1,14 @@
+[licenses]
+# Licenses your project is willing to accept.
+allow = [
+    "MIT",
+    "Apache-2.0",
+    "BSD-2-Clause",
+    "BSD-3-Clause",
+    "ISC",
+    "Unicode-3.0",
+    "Zlib",
+]
+
+# Warn if a dependency doesn't specify a license.
+private = { ignore = true }
