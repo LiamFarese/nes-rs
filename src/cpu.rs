@@ -1,12 +1,10 @@
 #[expect(dead_code)]
-#[expect(clippy::upper_case_acronyms)]
 pub struct CPU {
     register_a: u8,
     status: u8,
     program_counter: u8,
 }
 
-#[expect(dead_code)]
 impl CPU {
     pub fn new() -> Self {
         CPU {
@@ -19,6 +17,12 @@ impl CPU {
     pub fn interpret(&mut self, program: Vec<u8>) {
         let _program = program;
         todo!()
+    }
+}
+
+impl Default for CPU {
+    fn default() -> Self {
+        Self::new()
     }
 }
 
